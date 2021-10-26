@@ -1,0 +1,27 @@
+body{
+    background-color: #1D1D1D;
+    color: #C47AD3
+}
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #221D22;
+    overflow-y: auto;
+    
+}
+.song{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: solid #5E1A8B 1px;
+}
+.songInfo{
+    margin: 0%;
+    color: #C47AD3
+}
+.playlist{
+    width: 15%;
+    margin-inline: 5%;
+    /* overflow-x: auto; */
+    border: solid black 2px;
+}
