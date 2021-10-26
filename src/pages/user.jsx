@@ -4,6 +4,19 @@ export const User = () =>{
     return(
         <div className="container">
             <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            <Playlist />
+            
+            
             
         </div>
     )
@@ -13,19 +26,29 @@ const Playlist = () => {
     return(
         <div className="playlist">
             <Input/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
-            <Song/>
+            <AddSong/>
+            <div className="playlistContent">
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+            </div>
             
         </div>
     )
@@ -54,6 +77,13 @@ const Song = () => {
     )
 }
 
+const AddSong = () => {
+    return(
+        <div>
+            <button className="button">Add Song</button>
+        </div>
+    )
+}
 
 //test comment
 export default User;
