@@ -1,5 +1,5 @@
+import User from "./pages/user"
 import Home from './pages/home';
-import user from './pages/user'
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
