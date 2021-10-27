@@ -51,27 +51,7 @@ const Playlist = () => {
                 <Song/>
                 <Song/>
                 <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
-                <Song/>
+             
             </div>
             
         </div>
