@@ -1,33 +1,57 @@
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
+
 import './user.css';
 
 export const User = () =>{
+
+    let playlistNames = []
+
+
+
+
+
     return(
-        <div className="container">
+        <div>
             <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            
-            
-            
+            <NewPlaylist/>
+            <div className="container">
+                
+            </div>
         </div>
     )
 }
 
+const NewPlaylist = () => {
+    const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
+  return (
+    <div >
+      <button className="button" onClick={onOpenModal}>ADD PLAYLIST</button>
+      <Modal  open={open} onClose={onCloseModal} center>
+        <Input className="playlistModal"/>
+      </Modal>
+    </div>
+  );
+};
+
+
 const Playlist = () => {
     return(
         <div className="playlist">
-            <Input/>
             <AddSong/>
             <div className="playlistContent">
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
+                <Song/>
                 <Song/>
                 <Song/>
                 <Song/>
@@ -78,12 +102,22 @@ const Song = () => {
 }
 
 const AddSong = () => {
-    return(
-        <div>
-            <button className="button">Add Song</button>
-        </div>
-    )
-}
+    const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
+  return (
+    <div>
+      <button className="button" onClick={onOpenModal}>ADD SONG</button>
+      <Modal open={open} onClose={onCloseModal} center>
+        <Input />
+        <Input />
+        <Input />
+      </Modal>
+    </div>
+  );
+};
 
 //test comment
 export default User;
