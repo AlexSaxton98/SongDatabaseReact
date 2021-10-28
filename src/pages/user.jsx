@@ -8,7 +8,7 @@ import './user.css';
 
 export const User = () =>{
 
-    let playlistNames = []
+    
 
 
 
