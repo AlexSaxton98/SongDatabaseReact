@@ -31,8 +31,10 @@ const Home = () => {
 
     const register = () => {
         axios.post("https://thissongdatabase.herokuapp.com/users/register", {
-            email: regUsername,
-            password: regPassword
+            user: { 
+                email: regUsername,
+                password: regPassword
+            }
         }).then((response) => {
             console.log(response);
         });
