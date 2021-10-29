@@ -4,6 +4,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
 function App() {
+  console.log(process.env)
   return (
     <div className="App">
     <Switch>

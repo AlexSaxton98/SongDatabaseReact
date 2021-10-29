@@ -4,10 +4,13 @@ import './Modal.css';
 import { LoginPage, ArtPanel, LoginPanel, InputBox, LogBtn, LoginSection } from './home-styling';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+require("dotenv").config();
+
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Home = () => {
 
-    
     const [regUsername, setRegUsername] = useState("");
     const [regPassword, setRegPassword] = useState("");
 
@@ -24,27 +27,50 @@ const Home = () => {
         setShowModal(false);
     };
 
-    const logusrpass = () => {
-        console.log(username)
-        console.log(password)
-    };
-
     // https://thissongdatabase.herokuapp.com/users/register
-    const register = (event) => {
-        event.preventDefault()
-        console.log("got here");
-        axios.post("https://thissongdatabase.herokuapp.com/users/register", {
-            user: { 
-                email: regUsername,
-                password: regPassword
-            }
-        }).then((response) => {
-            console.log("response from backend: ", response);
-        });
-    };
+    // const register = (event) => {
+    //     event.preventDefault()
+    //     console.log("got here");
+    //     axios.post(`${BASE_URL}/users/register`, {
+    //         user: { 
+    //             email: regUsername,
+    //             password: regPassword
+    //         }
+    //     }).then((response) => {
+    //         console.log("response from backend: ", response);
+    //     });
+    // };
+
+
+    const register = async (e) => {
+        console.log("got here 1");
+        e.preventDefault();
+        try {
+            console.log("got here 2");
+            const obj = JSON.stringify(
+                {
+                    email: regUsername,
+                    password: regPassword
+                }
+            );
+            console.log(obj);
+            const res = await fetch(`${BASE_URL}/users/register`, {
+                mode: "cors",
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json" 
+                },
+                body: obj
+            });
+            const data = await res.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const login = () => {
-        axios.post("https://thissongdatabase.herokuapp.com/users/login", {
+        axios.post(`${BASE_URL}/users/login`, {
             user: {
                 email: username,
                 password: password
@@ -65,7 +91,7 @@ const Home = () => {
                             <InputBox type="text" placeholder="email..." onChange={e => setUsername(e.target.value)} />
                             <InputBox type="password" placeholder="password..." onChange={e => setPassword(e.target.value)} />
                             <Link to={'./user'} >
-                                <LogBtn type="submit" onClick={logusrpass}> Log in. </LogBtn>
+                                <LogBtn type="submit" onClick={login}> Log in. </LogBtn>
                             </Link>
                         </form>
                         <p>Don't have an account? <span className="signup" onClick={handleShowModal}>Sign up.</span></p>
@@ -88,7 +114,7 @@ const Home = () => {
                             <h4 className="create">Create an account.</h4>
                             <form action="" onSubmit={register}>
                                 <InputBox type="text" placeholder="email..." className="inputstyle" onChange={e => setRegUsername(e.target.value)}/>
-                                <InputBox type="text" placeholder="password..." className="inputstyle" onChange={e => setRegPassword(e.target.value)}/>
+                                <InputBox type="password" placeholder="password..." className="inputstyle" onChange={e => setRegPassword(e.target.value)}/>
                                 <LogBtn type="submit" > Sign up. </LogBtn>
                             </form>
                         </div>
