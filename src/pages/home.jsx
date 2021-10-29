@@ -29,18 +29,30 @@ const Home = () => {
         console.log(password)
     };
 
-    const register = () => {
+    // https://thissongdatabase.herokuapp.com/users/register
+    const register = (event) => {
+        event.preventDefault()
+        console.log("got here");
         axios.post("https://thissongdatabase.herokuapp.com/users/register", {
             user: { 
                 email: regUsername,
                 password: regPassword
             }
         }).then((response) => {
-            console.log(response);
+            console.log("response from backend: ", response);
         });
     };
 
-
+    const login = () => {
+        axios.post("https://thissongdatabase.herokuapp.com/users/login", {
+            user: {
+                email: username,
+                password: password
+            }
+        }).then((response) => {
+            console.log(response)
+        });
+    };
 
     return (
         <div>
@@ -74,10 +86,10 @@ const Home = () => {
                         </div>
                         <div>
                             <h4 className="create">Create an account.</h4>
-                            <form action="">
+                            <form action="" onSubmit={register}>
                                 <InputBox type="text" placeholder="email..." className="inputstyle" onChange={e => setRegUsername(e.target.value)}/>
                                 <InputBox type="text" placeholder="password..." className="inputstyle" onChange={e => setRegPassword(e.target.value)}/>
-                                <LogBtn type="submit" onClick={register}> Sign up. </LogBtn>
+                                <LogBtn type="submit" > Sign up. </LogBtn>
                             </form>
                         </div>
                 </Modal>          
