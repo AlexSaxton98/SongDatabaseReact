@@ -3,7 +3,7 @@ import { useState } from "react";
 import './Modal.css';
 import { LoginPage, ArtPanel, LoginPanel, InputBox, LogBtn, LoginSection } from './home-styling';
 import { Link } from 'react-router-dom';
-import Axios from 'axios';
+import axios from 'axios';
 
 const Home = () => {
 
@@ -30,7 +30,7 @@ const Home = () => {
     };
 
     const register = () => {
-        Axios.post("https://thissongdatabase.herokuapp.com/users/register", {
+        axios.post("https://thissongdatabase.herokuapp.com/users/register", {
             email: regUsername,
             password: regPassword
         }).then((response) => {
