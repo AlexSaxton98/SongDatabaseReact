@@ -1,10 +1,15 @@
-import Modal from 'react-modal'
-import { useState } from "react"
-import './Modal.css'
-import { LoginPage, ArtPanel, LoginPanel, InputBox, LogBtn, LoginSection } from './home-styling'
+import Modal from 'react-modal';
+import { useState } from "react";
+import './Modal.css';
+import { LoginPage, ArtPanel, LoginPanel, InputBox, LogBtn, LoginSection } from './home-styling';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Home = () => {
+
+    
+    const [regUsername, setRegUsername] = useState("");
+    const [regPassword, setRegPassword] = useState("");
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
@@ -22,7 +27,18 @@ const Home = () => {
     const logusrpass = () => {
         console.log(username)
         console.log(password)
-    }
+    };
+
+    const register = () => {
+        axios.post("https://thissongdatabase.herokuapp.com/users/register", {
+            email: regUsername,
+            password: regPassword
+        }).then((response) => {
+            console.log(response);
+        });
+    };
+
+
 
     return (
         <div>
@@ -57,9 +73,9 @@ const Home = () => {
                         <div>
                             <h4 className="create">Create an account.</h4>
                             <form action="">
-                                <InputBox type="text" placeholder="email..." className="inputstyle"/>
-                                <InputBox type="text" placeholder="password..." className="inputstyle" />
-                                <LogBtn type="submit" > Sign up. </LogBtn>
+                                <InputBox type="text" placeholder="email..." className="inputstyle" onChange={e => setRegUsername(e.target.value)}/>
+                                <InputBox type="text" placeholder="password..." className="inputstyle" onChange={e => setRegPassword(e.target.value)}/>
+                                <LogBtn type="submit" onClick={register}> Sign up. </LogBtn>
                             </form>
                         </div>
                 </Modal>          
