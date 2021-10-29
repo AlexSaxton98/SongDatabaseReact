@@ -29,7 +29,9 @@ const Home = () => {
         console.log(password)
     };
 
+    // https://thissongdatabase.herokuapp.com/users/register
     const register = () => {
+        console.log("got here");
         axios.post("https://thissongdatabase.herokuapp.com/users/register", {
             user: { 
                 email: regUsername,
@@ -40,7 +42,16 @@ const Home = () => {
         });
     };
 
-
+    const login = () => {
+        axios.post("https://thissongdatabase.herokuapp.com/users/login", {
+            user: {
+                email: username,
+                password: password
+            }
+        }).then((response) => {
+            console.log(response)
+        });
+    };
 
     return (
         <div>
